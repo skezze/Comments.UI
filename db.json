@@ -1,0 +1,38 @@
+{
+    "comments": [
+      {
+        "id": 1,
+        "userName": "JohnDoe123",
+        "email": "johndoe@example.com",
+        "homePage": "http://johndoe.com",
+        "captcha": "AB12C",
+        "text": "This is the main comment text with some <strong>allowed</strong> HTML tags.",
+        "dateAdded": "2024-10-10T10:30:00Z",
+        "replies": [
+          {
+            "id": 2,
+            "userName": "JaneDoe456",
+            "email": "janedoe@example.com",
+            "homePage": "http://janedoe.com",
+            "captcha": "ZX78K",
+            "text": "This is a reply to JohnDoe123's comment.",
+            "dateAdded": "2024-10-10T11:00:00Z",
+            "replies": []
+          }
+        ],
+        "attachments": [
+          {
+            "type": "image",
+            "fileName": "example-image.jpg",
+            "fileSizeKB": 45,
+            "dimensions": { "width": 320, "height": 240 }
+          },
+          {
+            "type": "text",
+            "fileName": "example-text.txt",
+            "fileSizeKB": 80
+          }
+        ]
+      }
+    ]
+  }

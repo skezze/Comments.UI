@@ -1,0 +1,9 @@
+<form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+    <input formControlName="userName" placeholder="User Name" required />
+    <input formControlName="email" placeholder="E-mail" type="email" required />
+    <input formControlName="homePage" placeholder="Home Page" type="url" />
+    <input formControlName="captcha" placeholder="CAPTCHA" required />
+    <textarea formControlName="text" placeholder="Text" required></textarea>
+    <button type="submit">Добавить комментарий</button>
+  </form>
+  

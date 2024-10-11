@@ -1,0 +1,18 @@
+<div class="file-preview">
+    <div *ngFor="let file of attachments; let i = index">
+      <div *ngIf="isImage(file)">
+        <img 
+          [src]="'assets/uploads/' + file.fileName" 
+          [alt]="file.fileName" 
+          (click)="open(i)"
+          width="100"
+          height="75"
+          style="cursor: pointer;"
+        />
+      </div>
+      <div *ngIf="isText(file)">
+        <a [href]="'assets/uploads/' + file.fileName" target="_blank">{{ file.fileName }}</a>
+      </div>
+    </div>
+  </div>
+  
