@@ -1,12 +1,3 @@
-FROM node:alpine
-
-WORKDIR /usr/src/app
-
-COPY ./dist/comments.ui .
+FROM nginx:alpine
+COPY ./dist/comments.ui /usr/share/nginx/html
 EXPOSE 80
-
-RUN npm install -g @angular/cli
-
-RUN npm install
-
-CMD ["ng", "serve", "--host", "0.0.0.0"]
