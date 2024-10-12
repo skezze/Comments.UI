@@ -33,7 +33,7 @@ jobs:
       run: docker push ${{ secrets.DOCKER_USERNAME }}/comments-ui:latest
 
   deploy:
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     needs: build_and_push
     environment:
