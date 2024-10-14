@@ -1,10 +1,7 @@
-<div *ngFor="let comment of sortedComments">
-    <p><strong>{{ comment.userName }}</strong> - {{ comment.dateAdded | date }}</p>
+<ul>
+  <li *ngFor="let comment of comments">
+    <strong>{{ comment.userName }}</strong>
     <p>{{ comment.text }}</p>
-    
-    <!-- Файловый компонент для вложений -->
-    <app-file-preview [attachments]="comment.attachments"></app-file-preview>
-  
-    <hr />
-  </div>
-  
+    <span>{{ comment.dateAdded| date }}</span>
+  </li>
+</ul>
