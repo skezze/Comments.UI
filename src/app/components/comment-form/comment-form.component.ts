@@ -1,9 +1,9 @@
 // src/app/comment-form/comment-form.component.ts
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { UserComment } from '../../models/user-comment';
-import { RecaptchaModule } from 'ng-recaptcha';
+import { RecaptchaComponent, RecaptchaModule } from 'ng-recaptcha';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommentService } from '../../services/comment.service';
 import { NgIf } from '@angular/common';
@@ -20,6 +20,7 @@ import { NgIf } from '@angular/common';
     RecaptchaModule]
 })
 export class CommentFormComponent {
+  @ViewChild(RecaptchaComponent) recaptchaComponent!: RecaptchaComponent;
   commentForm: FormGroup;
   captchaSuccess: boolean = false;
   siteKey = '6LezIGMqAAAAANuY9mqPsj4ALZrLiWVsEatuibug';
@@ -55,6 +56,9 @@ export class CommentFormComponent {
           console.log('Comment submitted:', response);
           this.commentForm.reset();
           this.captchaSuccess = false; // Reset captcha status
+                  
+          // Сбрасываем состояние reCAPTCHA
+          this.recaptchaComponent.reset();
         },
         error: (err) => {
           console.error('Error submitting comment:', err);
