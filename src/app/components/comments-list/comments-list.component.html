@@ -1,0 +1,16 @@
+<!-- src/app/comments-list/comments-list.component.html -->
+<div *ngIf="comments.length > 0; else noComments">
+    <h2>Comments</h2>
+    <ul>
+      <li *ngFor="let comment of comments">
+        <strong>{{ comment.user.userName }} ({{ comment.user.email }})</strong>
+        <p>{{ comment.text }}</p>
+        <small>{{ comment.dateAdded | date: 'short' }}</small>
+      </li>
+    </ul>
+  </div>
+  
+  <ng-template #noComments>
+    <p>No comments available.</p>
+  </ng-template>
+  <app-comment-form></app-comment-form>

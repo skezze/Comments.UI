@@ -1,9 +1,32 @@
+<!-- src/app/comment-form/comment-form.component.html -->
 <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
-    <input formControlName="userName" placeholder="User Name" required />
-    <input formControlName="email" placeholder="E-mail" type="email" required />
-    <input formControlName="homePage" placeholder="Home Page" type="url" />
-    <input formControlName="captcha" placeholder="CAPTCHA" required />
-    <textarea formControlName="text" placeholder="Text" required></textarea>
-    <button type="submit">Добавить комментарий</button>
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" type="email" />
+      <div *ngIf="commentForm.get('email')?.invalid && commentForm.get('email')?.touched">
+        <small *ngIf="commentForm.get('email')?.errors?.['required']">Email is required.</small>
+        <small *ngIf="commentForm.get('email')?.errors?.['email']">Invalid email format.</small>
+      </div>
+    </div>
+  
+    <div>
+      <label for="userName">User Name:</label>
+      <input id="userName" formControlName="userName" />
+      <div *ngIf="commentForm.get('userName')?.invalid && commentForm.get('userName')?.touched">
+        <small *ngIf="commentForm.get('userName')?.errors?.['required']">User name is required.</small>
+      </div>
+    </div>
+  
+    <div>
+      <label for="text">Comment:</label>
+      <textarea id="text" formControlName="text"></textarea>
+      <div *ngIf="commentForm.get('text')?.invalid && commentForm.get('text')?.touched">
+        <small *ngIf="commentForm.get('text')?.errors?.['required']">Comment is required.</small>
+      </div>
+    </div>
+  
+    <re-captcha (resolved)="onCaptchaSuccess()" [siteKey]="siteKey"></re-captcha>
+  
+    <button type="submit" [disabled]="commentForm.invalid || !captchaSuccess">Submit</button>
   </form>
   

@@ -1,7 +1,8 @@
 import { Routes } from '@angular/router';
-import { HomePageComponent } from './pages/home-page/home-page.component';
+import { CommentsListComponent } from './components/comments-list/comments-list.component';
 
 export const routes: Routes = [
-    { path:"", redirectTo:"/home" , pathMatch:"full" },
-    { path:"home", component:HomePageComponent }
+    { path:"", redirectTo:"comments" , pathMatch:"full" },
+    { path:"comments", component:CommentsListComponent }
+
 ];
